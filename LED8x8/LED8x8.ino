@@ -4,6 +4,9 @@
    The code is meant to be verbose.
 */
 
+const char message[] = "0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+const int charTime = 40;
+
 // LED pins corresponding to Arduino pins
 enum LedPins {
   LED_PIN_01 = 6,
@@ -51,8 +54,6 @@ enum LedCols {
 const int row[] = {LED_ROW_1, LED_ROW_2, LED_ROW_3, LED_ROW_4, LED_ROW_5, LED_ROW_6, LED_ROW_7, LED_ROW_8};
 const int col[] = {LED_COL_1, LED_COL_2, LED_COL_3, LED_COL_4, LED_COL_5, LED_COL_6, LED_COL_7, LED_COL_8};
 
-const int charTime = 30;
-
 // String arrays use too much dynamic memory. PROGMEM allows to store data in flash (program) memory instead of SRAM.
 const char chrA[8][9] PROGMEM = {
   "00111100",
@@ -66,14 +67,14 @@ const char chrA[8][9] PROGMEM = {
 };
 
 const char chrB[8][9] PROGMEM = {
-  "11111110",
+  "11111100",
   "11000110",
   "11000110",
   "11111100",
   "11000110",
   "11000110",
   "11000110",
-  "1111110"
+  "11111100"
 };
 
 const char chrC[8][9] PROGMEM = {
@@ -124,9 +125,9 @@ const char chrG[8][9] PROGMEM = {
   "01111100",
   "11000110",
   "11000000",
+  "11000000",
   "11001110",
-  "11000110",
-  "11000110",
+  "11001110",
   "11000110",
   "01111100"
 };
@@ -464,7 +465,6 @@ void setup() {
 }
 
 void loop() {
-  const char message[] = "HAVE A NICE DAY OR ELSE";
   showString(message);
   showBlank();
 }
