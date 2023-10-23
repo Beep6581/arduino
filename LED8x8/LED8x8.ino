@@ -53,6 +53,7 @@ const int col[] = {LED_COL_1, LED_COL_2, LED_COL_3, LED_COL_4, LED_COL_5, LED_CO
 
 const int charTime = 30;
 
+// String arrays use too much dynamic memory. PROGMEM allows to store data in flash (program) memory instead of SRAM.
 const char chrA[8][9] PROGMEM = {
   "00111100",
   "01100110",
@@ -465,6 +466,7 @@ void setup() {
 void loop() {
   const char message[] = "HAVE A NICE DAY OR ELSE";
   showString(message);
+  showBlank();
 }
 
 void showString(const char* message) {
@@ -519,7 +521,6 @@ void showString(const char* message) {
   }
 }
 
-
 void showCharByRow(const char symbol[8][9]) {
   for (int t = 0; t < charTime; t++) {
     for (int r = 0; r < 8; r++) {
@@ -540,5 +541,5 @@ void showBlank() {
     digitalWrite(row[i], LOW);
     digitalWrite(col[i], HIGH);
   }
-  delay(charTime * 10);
+  delay(charTime * 20);
 }
